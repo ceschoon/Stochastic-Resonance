@@ -1,0 +1,184 @@
+\subsection{Démonstration analytique}
+
+\paragraph{} Dans cette section, nous allons montrer analytiquement le phénomène de résonance stochastique pour une particule dans un double puits de potentiel. Nous supposons que la dynamique de la particule est sur-amortie. Le forçage prend la forme d'un cosinus %de fréquence $\omega$, de phase $\phi$. L'amplitude du forçage $\epsilon h(x)$ 
+dont l'amplitude dépend de la position à travers une fonction $h(x)$. Un paramètre d'expansion $\epsilon \ll 1$ multiplie l'amplitude du forçage afin de le rendre petit par rapport au gradient du potentiel. La présence de bruit s'implémente au travers d'une force stochastique $F(t)$, correspondant à un bruit blanc gaussien vérifiant
+
+\begin{equation}\label{force_stochastique}
+\begin{split}
+	&\langle F(t) \rangle = 0, \\
+	&\langle F(t)F(t') = q^2 \delta(t-t').
+\end{split}
+\end{equation}
+Le paramètre $q^2$ est l'intensité du bruit. L'équation différentielle stochastique décrivant le mouvement de la particule est
+
+\begin{equation}\label{SDE_particule}
+	\dv{x}{t} = -\frac{\partial U}{\partial x} + F(t) + \epsilon h(x) \cos(\omega t + \phi)
+\end{equation}
+De manière équivalente, nous pouvons absorber le forçage dans un potentiel dépendant du temps,
+
+\begin{equation}\label{potentiel_W}
+	W(x,t) = U(x) - \epsilon g(x) \cos(\omega t + \phi), \qquad \text{avec } \dv{g}{x}=h.
+\end{equation}
+Ainsi, l'équation de la dynamique devient
+
+\begin{equation}\label{SDE_potentiel_W}
+	\dv{x}{t} = -\frac{\partial W(x,t)}{\partial x} + F(t).
+\end{equation}
+
+\paragraph{} En l'absence de forçage, nous sommes en présence d'un processus de diffusion dans le potentiel $U$. Les taux de transition entre les deux puits sont donnés par par formule de Kramers \cite{nicolis1982}:
+
+\begin{equation}\label{Kramers}
+	r_\pm = \frac{1}{2\pi} [-U''(x_0)U''(x_\pm)]^{1/2} \exp\left(-\frac{2\Delta U_\pm}{q^2}\right),
+\end{equation}
+ces taux deviennent rapidement petit lorsque la barrière de potentiel $\Delta U_\pm = U(x_0) - U(x_\pm)$  augmente. Les quantités $x_0, x_-, x_+$ désignent respectivement la position du sommet de la barrière et les minima des puits de part et autre de la barrière. Les probabilités $p_\pm(t)$ pour que la particule se trouve dans les puits obéissent à l'équation maîtresse
+
+\begin{equation}\label{master_sans_forcage}
+	\dv{p_\pm(t)}{t} = r_\mp p_\mp(t) - r_\pm p_\pm(t).
+\end{equation}
+La solution stationnaire est facile à trouver:
+
+\begin{equation}\label{sol_proba_sans_forcage}
+	p_\pm = \frac{r_\mp}{r_+ + r_-}, \qquad p_+ + p_- = 1.
+\end{equation}
+
+\paragraph{} Pour un petit forçage, les taux sont dépendant du temps et l'équation maîtresse devient
+
+\begin{equation}\label{master_forcage}
+	\dv{p_\pm(t)}{t} = r_\mp(t) p_\mp(t) - r_\pm(t) p_\pm(t).
+\end{equation}
+Nous allons résoudre cette équation de manière perturbative en développant par rapport au paramètre $\epsilon$:
+
+\begin{equation}\label{developpements_perturbatifs}
+\begin{split}
+	r_\pm(t) &= r_\pm + \epsilon \rho_\pm \cos(\omega t + \phi) + \mathcal O(\epsilon^2), \\
+	p_\pm(t) &= p_\pm + \epsilon \pi_\pm  \cos(\omega t + \varphi) + \mathcal O(\epsilon^2).
+\end{split}
+\end{equation}
+Notons qu'à priori, la phase de la solution de l'équation maîtresse n'est pas identique à celle de la perturbation. Nous verrons par la suite qu'elles sont bien différentes. 
+
+\paragraph{} Le développement perturbatif du potentiel est naturellement
+
+\begin{equation}\label{potentiel_perturbatif}
+	W(x,t) = U(x) + \epsilon U_1(x,t), \qquad U_1(x,t) = g(x)\cos(\omega t + \phi).
+\end{equation}
+
+\paragraph{} Commençons par calculer les taux de transitions $r_\pm(t)$:
+
+\begin{equation}\label{dev_taux_transitions}
+\begin{split}
+	r_\pm(t) &= \frac{1}{2\pi} [-W''(x_0)W''(x_\pm)]^{1/2} \exp\left( -\frac{2}{q^2} [\Delta U_\pm + \epsilon \Delta U_{1\,\pm}] \right)\\
+	&= \frac{1}{2\pi} [-U''(x_0)U''(x_\pm)]^{1/2} \exp\left( -\frac{2}{q^2} [\Delta U_\pm + \epsilon \Delta U_{1\,\pm}] \right) \left( 1 + \sum_{i=0,\pm} \mathcal O\left( \frac{\epsilon g''(x_i)}{U''(x_i)} \right)  \right)  \\
+	&\approx r_\pm \exp\left( -\frac{2\epsilon}{q^2} \Delta U_{1\,\pm} \right)\\
+	&= r_\pm \left( 1 - \frac{2\epsilon}{q^2} \Delta U_{1\,\pm} + \mathcal O\left( \frac{\epsilon}{q^2} \Delta U_{1\,\pm} \right)^2 \right) 
+\end{split}
+\end{equation}
+avec $\Delta U_{1\,\pm} = g(x_0)-g(x_\pm)$. Ainsi la perturbation au premier ordre prend la forme
+\begin{equation}\label{rho_pm}
+	\rho_\pm = - \frac{1}{\pi q^2} [-U''(x_0)U''(x_\pm)]^{1/2} [g(x_0)-g(x_\pm)] \exp\left( - \frac{2}{q^2} \Delta U_\pm \right) 
+\end{equation}
+Cette expression n'est valable que %si la modulation $g(x)$ de l'amplitude du forçage est faible comparé à la barri 
+sous les conditions suivantes:
+
+\begin{equation}\label{conditions_validite_perturbation}
+	\epsilon |g(x_0)-g(x_\pm)| \ll q^2 \quad \text{et} \quad \frac{g''(x_i)}{U''(x_i)} \ll \frac{[g(x_0)-g(x_\pm)]}{q^2}.
+\end{equation}
+La première condition revient à demander à ce que le forçage ne domine pas la dynamique du système, ce qui va de soi pour les situations où la résonance stochastique est d'intérêt. La seconde demande à ce que la variation du forçage en fonction de la position ne soit pas trop importante. Cette dernière condition n'est pas relevante lorsque l'amplitude du forçage est uniforme.
+
+\paragraph{} Ayant obtenu les taux de transitions au premier ordre, nous pouvons remplacer les taux de transitions dans l'équation maîtresse \ref{master_forcage}. À l'ordre zéro, nous retombons naturellement sur la solution sans forçage. Au premier ordre, l'équation maîtresse est un système de deux équations couplées pour les perturbations au premier ordre des probabilités:
+
+\begin{equation}\label{master_premier_ordre_couple}
+\begin{split}
+	-\pi_\pm \omega \sin(\omega t + \varphi) &= 
+	\left[\rho_\mp \frac{r_\pm}{r_+ + r_-} - \rho_\pm \frac{r_\mp}{r_+ + r_-} \right] \cos(\omega t + \phi) \\
+	&\ \ + [r_\mp \pi_\mp - r_\pm \pi_\pm] \cos(\omega t + \varphi).
+\end{split}
+\end{equation}
+Ce système ce découple toutefois facilement en invoquant la conservation de la probabilité, $p_+ + p_- = 1$, qui impose $\pi_+ = -\pi_-$. Ainsi,
+
+\begin{equation}\label{master_premier_ordre_decouple}
+\begin{split}
+	-\pi_\pm \omega \sin(\omega t + \varphi) &= 
+	\left[\rho_\mp \frac{r_\pm}{r_+ + r_-} - \rho_\pm \frac{r_\mp}{r_+ + r_-} \right] \cos(\omega t + \phi) \\
+	&\ \ - [r_\mp + r_\pm] \pi_\pm \cos(\omega t + \varphi).
+\end{split}
+\end{equation}
+En nommant les quantités entre crochets $A_\pm$ et $B_\pm$, les équations maîtresses se réécrivent
+
+\begin{equation}\label{master_premier_ordre_AB}
+	-\pi_\pm \omega \sin(\omega t + \varphi) = 
+	A_\pm \cos(\omega t + \phi) - B_\pm \pi_\pm \cos(\omega t + \varphi).
+\end{equation}
+L'une d'entre elles est maintenant redondante.
+
+\paragraph{} Pour résoudre l'équation maîtresse au premier ordre, nous allons utiliser le fait que cette équation reste valide en tout instant pour la projeter sur la base formée par $\sin(\omega t+\phi)$ et $\cos(\omega t+\phi)$. Nous commençons pour mettre en évidence ces deux quantités en séparant l'angle $\varphi = \phi + \Delta \phi$:
+
+\begin{equation}
+\begin{split}
+	&-\pi_+ \omega [\sin(\omega t+\phi)\cos(\Delta\phi) + \cos(\omega t+\phi)\sin(\Delta\phi)] \\
+	&= A_+ \cos(\omega t+\phi) - B_+ \pi_+ [\cos(\omega t+\phi)\cos(\Delta\phi) - \sin(\omega t+\phi)\sin(\Delta\phi)].
+\end{split}
+\end{equation}
+L'équation en sinus donne le décalage de phase $\Delta\phi$:
+
+\begin{equation}\label{eq_sinus}
+	\pi_+ \omega \cos(\Delta\phi) = -B_+ \sin(\Delta\phi) \iff \tan(\Delta\phi) = -\frac{\omega}{r_+ + r_-}.
+\end{equation}
+L'équation en cosinus permet ensuite de trouver l'amplitude de la perturbation sur la probabilité:
+
+\begin{equation}\label{eq_cosinus}
+\begin{split}
+	-\pi_+\omega \sin(\Delta\phi) &= A_+ - B_+ \pi_+ \cos(\Delta\phi) \\
+	-\pi_+ \omega \frac{-\omega/B_+}{\sqrt{1+\omega^2/B_+^2}} &= A_+ - B_+ \pi_+ \frac{1}{\sqrt{1+\omega^2/B_+^2}} \\
+	\pi_+ (\omega^2 + B_+^2) &= A_+B_+ \sqrt{1+\omega^2/B_+^2}
+\end{split}
+\end{equation}
+Ainsi,
+
+\begin{equation}\label{expr_pi_AB}
+	\pi_+ = \frac{A_+}{B_+}  \frac{1}{\sqrt{1+\omega^2/B_+^2}} = \frac{A_+}{B_+} \frac{1}{\sqrt{1+\omega^2/(r_+ + r_-)^2}}
+	%\frac{r_+ + r_-}{(r_+ + r_-)^2+\omega^2}
+	.
+\end{equation}
+
+\paragraph{} Le calcul du rapport $A_+/B_+$ se fait en insérant les expression des taux de transitions aux ordres zéro et un. Nous obtenons
+
+\begin{equation}\label{rapport_AB}
+\begin{split}
+	\frac{A_+}{B_+} &= \frac{\rho_- r_+}{(r_+ + r_-)^2} - \frac{\rho_+ r_-}{(r_+ + r_-)^2} \\
+	&= \frac{2}{q^2} [g(x_-)-g(x_+)] 
+	\frac{
+		[U''_{0-}U''_{0+}]^{1/2} \exp(-\frac{2}{q^2} (\Delta U_+ + \Delta U_-))
+	}
+	{
+		\left[
+			[U''_{0+}]^{1/2} \exp(-\frac{2}{q^2} \Delta U_+) + [U''_{0-}]^{1/2} \exp(-\frac{2}{q^2} \Delta U_-)
+		\right]^2
+	} ,
+\end{split}
+\end{equation}
+où $U''_{0\pm} = -U''(x_0)U''(x_\pm)$. Nous avons maintenant résolu l'équation maîtresse \ref{master_premier_ordre_AB} et avons calculé la réponse du système bruité à un forçage extérieur.
+
+\paragraph{} La première chose que nous pouvons noter est le facteur $1/\sqrt{1+\omega^2/(r_+ + r_-)^2}$ dans l'expression de la réponse $\pi_+$. Le phénomène de résonance est bien visible lorsque la fréquence du signal $\omega$ approche la fréquence résonante $\omega_r = r_+ + r_-$. Notons que la réponse est fortement amortie pour les basses fréquences mais est encore assez grande dans la limite de basse fréquences. Comme l'a souligné Nicolis, cette propriété rend le qualificatif de "résonance" discutable \cite{nicolis1982}. Le système bruité se comporte un peu comme un filtre passe-bas.
+
+\paragraph{} Remarquons aussi que la réponse est pratiquement nulle si les deux puits du potentiel sont à des hauteurs trop différentes. Plus précisément, si $|\Delta U_+ - \Delta U_-| \gg q^2$, alors les taux de transitions sont très inégaux et la particule aura une probabilité quasi nulle de se trouver dans le puits le plus haut.
+Schématiquement, si l'on dénote par $e^\pm$ les exponentielles $\exp(-2\Delta U_\pm/q^2)$ et que le puits $x_-$ est le plus stable, la probabilité au premier ordre d'être dans le puits instable se comporte comme
+
+\begin{equation}
+	p_+ = \frac{r_-}{r_+ + r_-} \sim \frac{e^-}{e^+ + e^-} \approx \frac{e^-}{e^+} \ll 1.
+\end{equation}
+De même, la réponse au premier ordre s'annule exponentiellement vite car
+
+\begin{equation}
+	\pi_+ \sim \frac{A_+}{B_-} \sim \frac{e^+e^-}{(e^+ + e^-)^2} \approx \frac{e^-}{e^+} \ll 1.
+\end{equation}
+Pour que le phénomène de résonance puisse jouer un rôle, il est donc nécessaire que le système présente deux états de pareille stabilité. Dans le cadre de systèmes climatiques, Nicolis fait référence à un état de coexistence entre deux climats \cite{nicolis1981} \cite{nicolis1982}. Dans le cas d'un potentiel présentant un axe de symétrie entre les deux puits, l'expression de la réponse $\pi_+$ se simplifie en
+
+\begin{equation}\label{pi_sans_exp}
+	\pi_+ = \frac{1}{2q^2} \frac{g(x_-) - g(x_+)}{\sqrt{1+\omega^2/(r_+ + r_-)^2}}.
+\end{equation}
+
+
+
+
+
+

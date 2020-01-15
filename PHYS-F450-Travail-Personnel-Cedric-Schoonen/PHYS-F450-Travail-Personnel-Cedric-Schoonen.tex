@@ -1,0 +1,108 @@
+\documentclass[openany,a4paper,12pt]{article}
+\input{settings/packages}
+
+%% BIBLIOGRAPHY
+\input{settings/bibliography}
+\bibliography{literature/library}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\input{inputs/custom_title}
+	
+%\selectlanguage{french}
+%\begin{abstract}
+%	\input{inputs/abstract}
+%\end{abstract}
+%
+%\selectlanguage{english}
+%\begin{abstract}
+%	\input{inputs/abstract_en}
+%\end{abstract}
+%\selectlanguage{french}
+
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+%% Contenu:  Problèmes des glaciations, cyles de Milankovitch
+%            (une explication parmi d'autres), résonance 
+%            stochastique (Nicolis et Benzi), 
+%            But de ce travail: compte rendu de ce que j'ai saisi
+%            Plan: 1. parler des glaciations (sous plan?)
+%                  2. parler des cycles de Milankovitch (sous plan?)
+%                  3. parler de la résonance stochastique (sous plan?)
+%                  4. conclusions ?
+
+\input{inputs/introduction}
+
+\section{Les glaciations durant la période quaternaire}
+
+%% Contenu:  Dire qu'il y a eu des glaciations, les décrire, graphes
+%             montrant les périodicités (plusieurs indicateurs,ox18,...),
+%            Expliquer comment on le sait (preuves)
+%            Référencer les articles originaux si possible
+%            ...?
+
+\input{inputs/glaciations}
+
+\section{Les cycles de Milankovitch}
+
+%% Contenu:  Expliquer ce que c'est, graphes 
+%            Référencer les articles originaux si possible
+%            ...?
+
+\input{inputs/cycles_milankovitch}
+
+\section{Lien entre les cycles de Milankovitch et les \\glaciations}
+
+%% Contenu:  Overview des Modèles/Mécanisme et 
+%             leurs problèmes (propres ou commun à la théo Milankovitck),
+%            
+
+\input{inputs/lien_milankovitch_glaciations}
+
+\section{Le phénomène de résonance stochastique}
+
+%% Contenu:  Modélisation 0d du climat (Craaford, puis Nicolis et Benzi?),
+%            Potentiel climatologique et aspects stochastique (Nicolis),
+%            Forçage périodique seul ? (Benzi?),
+%            Forçage avec bruit et résonance stochastique (Nicolis) 
+%             (Benzi juste pour la résonance stochastique),
+%            Mes petits observations supplémentaire sur la résonance
+%             et pertinence potentielle ?,
+%            Référencer les articles originaux,
+%            Illuster avec mes images du code,
+%            Présenter code
+%            ...?
+
+\input{inputs/resonance_stochastique_intro}
+\input{inputs/resonance_stochastique_maths}
+\input{inputs/resonance_stochastique_numerique}
+\input{inputs/resonance_stochastique_glaciations}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Conclusions}
+
+%% Contenu:  ... résumer le travail ...
+%            Dire que ce n'est pas settled (pas l'air en tout cas)
+
+%\input{inputs/conclusions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\printbibliography
+
+\end{document} 
