@@ -10,6 +10,9 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
+// WARNING: This program takes a long time to run 
+// (one to several hours depending on the computer capabilities)
+
 /*  Execute this program with the following bash script:
 
 #! /bin/bash

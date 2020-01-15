@@ -229,7 +229,7 @@ int main()
 		
 		plotFile.close();
 		
-		int sys_result = system("cd data; gnuplot plot_trajectory");
+		sys_result = system("cd data; gnuplot plot_trajectory");
 	}
 	#endif
 	
@@ -276,7 +276,7 @@ int main()
 	
 	plotFile.close();
 	
-	int sys_result = system("cd data; gnuplot plot_potential");
+	sys_result = system("cd data; gnuplot plot_potential");
 	
 	
 	/////////////////////////// Fourier Transform //////////////////////////
